@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kali Linux for Cybersecurity — a comprehensive, hands-on learning path from Linux fundamentals to professional penetration testing. 340-395 hours aligned with PenTest+, CEH, eJPT, and OSCP.">
+  <meta name="keywords" content="kali linux, cybersecurity, penetration testing, ethical hacking, pentest, CEH, OSCP, security training">
+  <title>Kali Linux for Cybersecurity | Complete Learning Path</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      color: #fff;
+      padding: 3rem 0;
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #b0b0b0;
+    }
+
+    .badges {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .badge.cert {
+      background: linear-gradient(90deg, rgba(123,44,191,0.3), rgba(0,212,255,0.3));
+      border-color: #7b2cbf;
+    }
+
+    .content-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #00d4ff;
+      font-size: 1.8rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #00d4ff;
+    }
+
+    .feature p {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(123,44,191,0.1) 100%);
+      border-radius: 10px;
+      border: 1px solid rgba(0,212,255,0.3);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1rem 2rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stage-card {
+      background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #00d4ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+      border-color: #7b2cbf;
+    }
+
+    .stage-card.foundation {
+      border-left-color: #00d4ff;
+    }
+
+    .stage-card.assessment {
+      border-left-color: #ffd700;
+    }
+
+    .stage-card.operations {
+      border-left-color: #ff6b6b;
+    }
+
+    .stage-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00d4ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .stage-card.assessment .stage-number {
+      color: #ffd700;
+    }
+
+    .stage-card.operations .stage-number {
+      color: #ff6b6b;
+    }
+
+    .stage-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .stage-description {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .stage-hours {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .phase-label {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .phase-label.foundation {
+      background: rgba(0,212,255,0.2);
+      color: #00d4ff;
+    }
+
+    .phase-label.assessment {
+      background: rgba(255,215,0,0.2);
+      color: #ffd700;
+    }
+
+    .phase-label.operations {
+      background: rgba(255,107,107,0.2);
+      color: #ff6b6b;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .cert-card {
+      background: rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .cert-card:hover {
+      border-color: #7b2cbf;
+      transform: translateY(-3px);
+    }
+
+    .cert-name {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-coverage {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00d4ff;
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tool-tag {
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.3);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #00d4ff;
+      font-family: 'Courier New', monospace;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,212,255,0.4);
+      margin: 0.5rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(123,44,191,0.5);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid #00d4ff;
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(0,212,255,0.1);
+    }
+
+    .warning-box {
+      background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .warning-box h3 {
+      color: #ff6b6b;
+      margin-bottom: 0.5rem;
+    }
+
+    .warning-box p {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer a {
+      color: #00d4ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .terminal {
+      background: #0d1117;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #30363d;
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+
+    .terminal-content {
+      color: #c9d1d9;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .terminal-content .prompt {
+      color: #7ee787;
+    }
+
+    .terminal-content .command {
+      color: #79c0ff;
+    }
+
+    .terminal-content .comment {
+      color: #8b949e;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+      }
+      .content-card {
+        padding: 1.5rem;
+      }
+      .stat {
+        padding: 1rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo">🐉</div>
+      <h1>Kali Linux for Cybersecurity</h1>
+      <p class="subtitle">
+        A comprehensive, hands-on learning path from Linux fundamentals to professional penetration testing.
+        Zero to professional in 340-395 hours.
+      </p>
+      <div class="badges">
+        <span class="badge">📚 9 Structured Stages</span>
+        <span class="badge">⏱️ 340-395 Hours</span>
+        <span class="badge">🎯 Hands-On Labs</span>
+        <span class="badge cert">🏆 PenTest+ Aligned</span>
+        <span class="badge cert">🏆 CEH Aligned</span>
+        <span class="badge cert">🏆 OSCP Foundation</span>
+      </div>
+    </header>
+
+    <div class="content-card">
+      <h2>🎯 Why This Learning Path?</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-title">Zero to Professional</div>
+          <p>Start with no experience. End with job-ready skills and certification preparation.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔧</div>
+          <div class="feature-title">Hands-On Learning</div>
+          <p>Build real skills through lab exercises, not just theory. Every stage includes practical work.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎓</div>
+          <div class="feature-title">Certification Aligned</div>
+          <p>Mapped to PenTest+, CEH, eJPT, and OSCP objectives. Know exactly what you're preparing for.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Defense-First Mindset</div>
+          <p>Learn offensive techniques to build better defenses. Understand attackers to stop them.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>📊 Course Overview</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Structured Stages</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">340-395</div>
+          <div class="stat-label">Hours of Content</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Tools Covered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Certifications Aligned</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>📚 Learning Path Stages</h2>
+
+      <h3 style="color: #00d4ff; margin: 1.5rem 0 1rem;">Phase 1: Foundations</h3>
+      <div class="stage-grid">
+        <div class="stage-card foundation">
+          <span class="phase-label foundation">Foundation</span>
+          <div class="stage-number">01</div>
+          <div class="stage-title">Linux Foundations & CLI Mastery</div>
+          <div class="stage-description">Command line proficiency, file system navigation, text processing, shell scripting fundamentals.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+
+        <div class="stage-card foundation">
+          <span class="phase-label foundation">Foundation</span>
+          <div class="stage-number">02</div>
+          <div class="stage-title">Linux System Administration</div>
+          <div class="stage-description">User management, permissions, services, security hardening, logging and monitoring.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+
+        <div class="stage-card foundation">
+          <span class="phase-label foundation">Foundation</span>
+          <div class="stage-number">03</div>
+          <div class="stage-title">Networking Fundamentals</div>
+          <div class="stage-description">TCP/IP deep dive, protocol analysis, Wireshark, firewalls, network security concepts.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+      </div>
+
+      <h3 style="color: #ffd700; margin: 2rem 0 1rem;">Phase 2: Assessment</h3>
+      <div class="stage-grid">
+        <div class="stage-card assessment">
+          <span class="phase-label assessment">Assessment</span>
+          <div class="stage-number">04</div>
+          <div class="stage-title">Kali Linux & Security Methodology</div>
+          <div class="stage-description">Kali installation, tool categories, penetration testing methodology, lab environment setup.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+
+        <div class="stage-card assessment">
+          <span class="phase-label assessment">Assessment</span>
+          <div class="stage-number">05</div>
+          <div class="stage-title">Reconnaissance & Information Gathering</div>
+          <div class="stage-description">OSINT techniques, passive and active reconnaissance, DNS enumeration, subdomain discovery.</div>
+          <div class="stage-hours">⏱️ 40-50 hours</div>
+        </div>
+
+        <div class="stage-card assessment">
+          <span class="phase-label assessment">Assessment</span>
+          <div class="stage-number">06</div>
+          <div class="stage-title">Vulnerability Scanning & Analysis</div>
+          <div class="stage-description">Nmap NSE scripting, OpenVAS, Nikto, web scanners, vulnerability validation techniques.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+      </div>
+
+      <h3 style="color: #ff6b6b; margin: 2rem 0 1rem;">Phase 3: Operations</h3>
+      <div class="stage-grid">
+        <div class="stage-card operations">
+          <span class="phase-label operations">Operations</span>
+          <div class="stage-number">07</div>
+          <div class="stage-title">Exploitation Fundamentals</div>
+          <div class="stage-description">Metasploit framework, payload generation, shells, network and web application exploitation.</div>
+          <div class="stage-hours">⏱️ 40-50 hours</div>
+        </div>
+
+        <div class="stage-card operations">
+          <span class="phase-label operations">Operations</span>
+          <div class="stage-number">08</div>
+          <div class="stage-title">Post-Exploitation & Privilege Escalation</div>
+          <div class="stage-description">System enumeration, Linux/Windows privesc, credential harvesting, lateral movement, persistence.</div>
+          <div class="stage-hours">⏱️ 45-55 hours</div>
+        </div>
+
+        <div class="stage-card operations">
+          <span class="phase-label operations">Operations</span>
+          <div class="stage-number">09</div>
+          <div class="stage-title">Reporting & Professional Practice</div>
+          <div class="stage-description">Professional report writing, documentation standards, ethics, certifications, career development.</div>
+          <div class="stage-hours">⏱️ 35-45 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>🏆 Certification Alignment</h2>
+      <p style="color: #a0a0a0; margin-bottom: 1rem;">This course prepares you for major industry certifications:</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name">CompTIA PenTest+</div>
+          <div class="cert-coverage">~85%</div>
+          <p style="font-size: 0.8rem; color: #888;">coverage</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">eLearnSecurity eJPT</div>
+          <div class="cert-coverage">~90%</div>
+          <p style="font-size: 0.8rem; color: #888;">coverage</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">EC-Council CEH</div>
+          <div class="cert-coverage">~75%</div>
+          <p style="font-size: 0.8rem; color: #888;">coverage</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">Offensive Security OSCP</div>
+          <div class="cert-coverage">~60%</div>
+          <p style="font-size: 0.8rem; color: #888;">foundation</p>
+        </div>
+      </div>
+      <p style="color: #666; font-size: 0.85rem; margin-top: 1rem; text-align: center;">
+        ⚠️ Certification exam objectives change. Always verify current requirements at official vendor websites.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <h2>🛠️ Tools You'll Master</h2>
+      
+      <h4 style="color: #888; margin: 1rem 0 0.5rem;">Linux & System</h4>
+      <div class="tools-list">
+        <span class="tool-tag">bash</span>
+        <span class="tool-tag">grep</span>
+        <span class="tool-tag">awk</span>
+        <span class="tool-tag">sed</span>
+        <span class="tool-tag">find</span>
+        <span class="tool-tag">systemctl</span>
+        <span class="tool-tag">iptables</span>
+      </div>
+
+      <h4 style="color: #888; margin: 1rem 0 0.5rem;">Network Analysis</h4>
+      <div class="tools-list">
+        <span class="tool-tag">Wireshark</span>
+        <span class="tool-tag">tcpdump</span>
+        <span class="tool-tag">nmap</span>
+        <span class="tool-tag">netcat</span>
+        <span class="tool-tag">netstat</span>
+      </div>
+
+      <h4 style="color: #888; margin: 1rem 0 0.5rem;">Reconnaissance</h4>
+      <div class="tools-list">
+        <span class="tool-tag">theHarvester</span>
+        <span class="tool-tag">Maltego</span>
+        <span class="tool-tag">Recon-ng</span>
+        <span class="tool-tag">Shodan</span>
+        <span class="tool-tag">Amass</span>
+        <span class="tool-tag">Sublist3r</span>
+      </div>
+
+      <h4 style="color: #888; margin: 1rem 0 0.5rem;">Exploitation</h4>
+      <div class="tools-list">
+        <span class="tool-tag">Metasploit</span>
+        <span class="tool-tag">Msfvenom</span>
+        <span class="tool-tag">Burp Suite</span>
+        <span class="tool-tag">SQLMap</span>
+        <span class="tool-tag">Hydra</span>
+        <span class="tool-tag">John the Ripper</span>
+      </div>
+
+      <h4 style="color: #888; margin: 1rem 0 0.5rem;">Post-Exploitation</h4>
+      <div class="tools-list">
+        <span class="tool-tag">LinPEAS</span>
+        <span class="tool-tag">WinPEAS</span>
+        <span class="tool-tag">Mimikatz</span>
+        <span class="tool-tag">BloodHound</span>
+        <span class="tool-tag">Empire</span>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>🚀 Quick Start</h2>
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <div class="terminal-content">
+          <span class="comment"># Clone the repository</span><br>
+          <span class="prompt">$</span> <span class="command">git clone https://github.com/YOUR-USERNAME/kali-linux-learning-path.git</span><br><br>
+          <span class="comment"># Navigate to the course</span><br>
+          <span class="prompt">$</span> <span class="command">cd kali-linux-learning-path</span><br><br>
+          <span class="comment"># Start with the onboarding guide</span><br>
+          <span class="prompt">$</span> <span class="command">cat docs/START_HERE.md</span><br><br>
+          <span class="comment"># Begin Stage 01</span><br>
+          <span class="prompt">$</span> <span class="command">cd stage-starters/stage_01_Linux_Foundations_CLI_Mastery</span><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h2>📋 Prerequisites</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">💻</div>
+          <div class="feature-title">Hardware</div>
+          <p>16GB+ RAM recommended, 100GB+ free storage, virtualization-capable CPU</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🖥️</div>
+          <div class="feature-title">Software</div>
+          <p>VirtualBox or VMware, Windows/macOS/Linux host OS</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-title">Time</div>
+          <p>10-15 hours per week recommended. 6-10 months to completion.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">Experience</div>
+          <p>None required! Course starts from absolute zero.</p>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <h3>⚠️ Legal & Ethical Notice</h3>
+        <p>This course is for educational purposes only. Only test systems you own or have explicit written permission to test. Unauthorized access to computer systems is illegal. By using this material, you agree to use it ethically and legally.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2 style="margin-bottom: 1.5rem; color: #fff;">Ready to Start Your Cybersecurity Journey?</h2>
+      <a href="https://github.com/YOUR-USERNAME/kali-linux-learning-path" class="cta-button" target="_blank" rel="noopener noreferrer">
+        View on GitHub →
+      </a>
+      <a href="https://github.com/YOUR-USERNAME/kali-linux-learning-path/blob/main/docs/START_HERE.md" class="cta-button secondary" target="_blank" rel="noopener noreferrer">
+        Read the Guide
+      </a>
+    </div>
+
+    <footer>
+      <p>
+        <strong>Kali Linux for Cybersecurity Learning Path</strong><br>
+        Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        Learn • Practice • Secure
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
